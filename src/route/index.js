@@ -12,13 +12,13 @@ route.get('/api', function(req, res) {
     if (!url) return res.send('Enter URL params')
     
     const json = fs.readFileSync('./count.json', 'utf-8');
-    const obj = JSON.parse(json);
+    const obj = {"hit":0}
     
     obj.hit = obj.hit+1;
     
     const newJSON = JSON.stringify(obj);
     
-    fs.writeFileSync('./count.json', newJSON);
+    obj, newJSON);
     res.send(newJSON);
 })
 
