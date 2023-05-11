@@ -20,6 +20,15 @@ route.get('/api', function(req, res) {
     
     fs.writeFileSync(__path + '/database/count.json', newJSON);
     res.send(newJSON);
-})
+});
+
+route.get('*', (req, res) => {
+    res.status(404).json({
+        method : req.method,
+        message : 'cant find spesific endpoint, please make sure you read a documentation',
+        status : false,
+        code : 401,
+    });
+});
 
 module.exports = route;
