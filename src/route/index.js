@@ -18,48 +18,48 @@ route.get('/hit', function(req, res) {
     const json = fs.readFileSync(__path + '/database/hit/' + url + '.json', 'utf-8');
     const obj = JSON.parse(json);
     
-    obj.hit = obj.hit+1;
+    obj.value = obj.value+1;
     
     const newJSON = JSON.stringify(obj);
     
     fs.writeFileSync(__path + '/database/hit/' + url + '.json', newJSON);
-    res.send(newJSON);
+    res.sendFile(__path + '/database/hit/' + url + '.json');
 });
 
 route.get('/hit/visits', function(req, res) {
     const json = fs.readFileSync(__path + '/database/hit/visits.json', 'utf-8');
     const obj = JSON.parse(json);
     
-    obj.hit = obj.hit+1;
+    obj.value = obj.value+1;
     
     const newJSON = JSON.stringify(obj);
     
     fs.writeFileSync(__path + '/database/hit/visits.json', newJSON);
-    res.send(newJSON);
+    res.sendFile(__path + '/database/hit/visits.json');
 });
 
 route.get('/hit/requesttoday', function(req, res) {
     const json = fs.readFileSync(__path + '/database/hit/requesttoday.json', 'utf-8');
     const obj = JSON.parse(json);
     
-    obj.hit = obj.hit+1;
+    obj.value = obj.value+1;
     
     const newJSON = JSON.stringify(obj);
     
     fs.writeFileSync(__path + '/database/hit/requesttoday.json', newJSON);
-    res.send(newJSON);
+    res.sendFile(__path + '/database/hit/requesttoday.json');
 });
 
 route.get('/hit/totalrequest', function(req, res) {
     const json = fs.readFileSync(__path + '/database/hit/totalrequest.json', 'utf-8');
     const obj = JSON.parse(json);
     
-    obj.hit = obj.hit+1;
+    obj.value = obj.value+1;
     
     const newJSON = JSON.stringify(obj);
     
     fs.writeFileSync(__path + '/database/hit/totalrequest.json', newJSON);
-    res.send(newJSON);
+    res.sendFile(__path + '/database/hit/todayrequest.json');
 });
 
 module.exports = route;
