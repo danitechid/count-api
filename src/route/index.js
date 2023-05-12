@@ -2,6 +2,23 @@ __path = process.cwd()
 const router = require('express').Router();
 const route = router;
 const fs = require('fs');
+const cron = require('node-cron');
+
+function resetData() {
+  const obj = {
+    value: 0
+  };
+
+  const newJSON = JSON.stringify(obj);
+
+  fs.writeFileSync(__path + '/database/hit/requesttoday.json', newJSON);
+  console.log('Data reset successful');
+}
+
+// Jadwalkan reset setiap jam 12 malam
+cron.schedule('0 0 * * *', () => {
+  resetData();
+});
 
 route.get('/', (req, res) => {
     res.redirect('/hit?url=visits');
